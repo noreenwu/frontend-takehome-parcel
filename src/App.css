@@ -8,9 +8,9 @@ form {
   display: inline;
 }
 
-li {
+/* li {
   padding: 15px;
-}
+} */
 
 .search-results {
   background-color: lightblue;
@@ -35,6 +35,10 @@ li {
 .description {
   margin: 1.5em 10px;
   padding: 0.5em 10px;
+}
+
+.links {
+  margin-bottom: 20px;
 }
 
 ul {
