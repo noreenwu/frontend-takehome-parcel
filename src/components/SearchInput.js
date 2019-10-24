@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { get } from '../utils/SearchAPI'
+import Listing from './Listing'
 
 class SearchInput extends Component {
 
@@ -28,6 +29,7 @@ class SearchInput extends Component {
              let newResults = res.slice(0, 12)
              console.log("res", newResults, newResults.length)
              this.setState({ searchResult: newResults })
+
           })
           .catch((err) => {
              console.log("search error", err)
@@ -52,13 +54,6 @@ class SearchInput extends Component {
             size={80}
           />
 
-          <button
-            className={`btn btn-full`}
-              type='submit'
-              disabled={this.state.query === '' }>
-              Submit
-          </button>
-
         </form>
         <form>
           <button>
@@ -76,12 +71,13 @@ class SearchInput extends Component {
         </form>
 
         <div className="search-results">
-                <h3>hello</h3>
                 <ul>
                 { this.state.searchResult.length === 0
                   ? <li key='other'>no result</li>
                   : this.state.searchResult.map((res) => (
-                      <li key={res.sha}>{res.info} by {res.authors}</li>
+
+                        <Listing key={res.sha} listItem={res}/>
+
                   ))
                 }
                 </ul>

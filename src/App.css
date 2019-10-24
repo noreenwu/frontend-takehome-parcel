@@ -11,3 +11,32 @@ form {
 li {
   padding: 15px;
 }
+
+.search-results {
+  background-color: lightblue;
+}
+
+.btn {
+  width: 60px;
+  border: 1px solid grey;
+
+}
+
+.btn-full {
+  width: 80px;
+}
+
+.strong {
+  font-weight: bold;
+  /* font-style: italic; */
+  font-size: 1.5em;
+}
+
+.description {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+
+ul {
+  list-style: none;
+}
