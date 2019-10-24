@@ -51,7 +51,7 @@ class SearchInput extends Component {
             onChange={(event) => this.updateQuery(event.target.value)}
             className='text-area'
             maxLength={100}
-            size={80}
+            size={60}
           />
 
         </form>

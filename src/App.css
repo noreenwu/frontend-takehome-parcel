@@ -22,6 +22,10 @@ form {
 
 }
 
+.btn-save {
+  margin-top: 10px;
+}
+
 .btn-full {
   width: 80px;
 }
@@ -43,4 +47,19 @@ form {
 
 ul {
   list-style: none;
+}
+
+input[type=text] {
+  font-size: 1.2em;
+}
+
+.result-container {
+  display: flex;
+}
+
+.grid-left {
+  width: 10%;
+}
+.grid-right {
+  width: 90%;
 }

@@ -20,17 +20,21 @@ function Listing (props) {
   }
 
   return (
-    <Fragment>
-      <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
-        <span className="description">{listItem.info}</span>
-          <ul className="links">
-          { links.map((uri) => (
-              <li key={uri.what}>{uri.what} {uri.url}</li>
-          ))}
-          </ul>
-      </li>
-      <button className={`btn`}>Save</button>
-    </Fragment>
+    <div className="result-container">
+      <div className="grid-left">
+        <button className={`btn btn-save`}>Save</button>
+      </div>
+      <div className="grid-right">
+          <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
+            <span className="description">{listItem.info}</span>
+              <ul className="links">
+              { links.map((uri) => (
+                  <li key={uri.what}>{uri.what} {uri.url}</li>
+              ))}
+              </ul>
+          </li>
+      </div>
+    </div>
   )
 }
 
