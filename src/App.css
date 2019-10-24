@@ -50,6 +50,7 @@ ul {
 }
 
 input[type=text] {
+  margin: 30px 10px;
   font-size: 1.2em;
 }
 
@@ -62,4 +63,12 @@ input[type=text] {
 }
 .grid-right {
   width: 90%;
+}
+
+.header {
+  background-color: darkblue;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  padding: 20px 10px;
 }

@@ -5,12 +5,12 @@ import SearchInput from './components/SearchInput'
 function App() {
   return (
     <div className="App">
+      <div className="header">
+          Search Ruby Gems
+      </div>
       <div className="user-inputs">
 
-          hey, there
           <SearchInput/>
-      </div>
-      <div className="results">
       </div>
 
     </div>
