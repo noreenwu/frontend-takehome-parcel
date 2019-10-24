@@ -7,30 +7,10 @@ class SearchInput extends Component {
     super(props)
     this.state = {
       query: '',
-      searchResult: ['a', 'b', 'c']
+      searchResult: []
     }
-    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(e) {
-      console.log("handleChange")
-      this.setState({
-        [e.target.name]: e.target.value
-      })
-
-      let query = e.target.value
-
-      if (query !== '') {
-        get(query)
-          .then(console.log("got results"))
-          .catch((err) => {
-             console.log("search error", err)
-          })
-      }
-      // this.setState ({
-      //   searchResult : ['a', 'b']
-      // })
-  }
 
   updateQuery(query) {
       this.setState(() => ({
@@ -45,9 +25,9 @@ class SearchInput extends Component {
       else {
         get(query.toLowerCase())
           .then((res) => {
-             let newResults = res
-             console.log("res", res, res.length)
-             // this.setState({ searchResult: newResults })
+             let newResults = res.slice(0, 12)
+             console.log("res", newResults, newResults.length)
+             this.setState({ searchResult: newResults })
           })
           .catch((err) => {
              console.log("search error", err)
@@ -55,20 +35,12 @@ class SearchInput extends Component {
       }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log("form submit")
-    let query = 'wiki'
-    console.log('target', e.target)
-    get(query)
-
-  }
 
   render() {
     console.log("query is ", this.state.query)
     return(
       <div>
-        <form className='search-box' onSubmit={this.handleSubmit}>
+        <form className='search-box'>
         <input
             name="query"
             type="text"
@@ -105,13 +77,14 @@ class SearchInput extends Component {
 
         <div className="search-results">
                 <h3>hello</h3>
-                <div>{this.state.searchResult[0]}</div>
+                <ul>
                 { this.state.searchResult.length === 0
-                  ? <li key='1'>no result</li>
-                  : this.state.searchResult.map((id) => (
-                      <li key={id}>something</li>
+                  ? <li key='other'>no result</li>
+                  : this.state.searchResult.map((res) => (
+                      <li key={res.sha}>{res.info} by {res.authors}</li>
                   ))
                 }
+                </ul>
         </div>
       </div>
     )
