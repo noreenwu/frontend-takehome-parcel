@@ -18,6 +18,7 @@ class SearchInput extends Component {
       savedItems: {}
     }
     this.saveItem = this.saveItem.bind(this)
+    this.unsaveItem = this.unsaveItem.bind(this)
     this.isSaved = this.isSaved.bind(this)
   }
 
@@ -37,8 +38,16 @@ class SearchInput extends Component {
 
   }
 
-  deleteItem() {
+  unsaveItem(id) {
       // remove item from the state.savedItems
+      let newSavedItems = {}
+      newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
+      delete newSavedItems[id]
+      console.log("new saved items after deletion ", newSavedItems)
+
+      this.setState(() => ({
+        savedItems: newSavedItems
+      }))
 
       // have it removed from localstorage (utils)
 
@@ -117,7 +126,11 @@ class SearchInput extends Component {
                   ? <li key='other'>no result</li>
                   : this.state.searchResult.map((res) => (
 
-                        <Listing key={res.sha} listItem={res} saveItem={this.saveItem} alreadySaved={this.isSaved(res.sha)}/>
+                        <Listing key={res.sha}
+                                 listItem={res}
+                                 saveItem={this.saveItem}
+                                 unsaveItem={this.unsaveItem}
+                                 alreadySaved={this.isSaved(res.sha)}/>
 
                   ))
                 }

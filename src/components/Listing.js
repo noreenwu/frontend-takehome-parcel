@@ -3,13 +3,19 @@ import PropTypes from 'prop-types'
 
 class Listing extends Component {
 
-  handleChange(e, saveItem, item) {
+  handleChange(e, saveItem, unsaveItem, item, alreadySaved) {
     e.preventDefault()
-    saveItem(item)
+
+    if ( alreadySaved ) {
+      unsaveItem(item.sha)
+    }
+    else {
+      saveItem(item)
+    }
   }
 
   render() {
-    const { listItem, saveItem, alreadySaved } = this.props
+    const { listItem, saveItem, unsaveItem, alreadySaved } = this.props
 
     let links = []
     // assemble an array of non-null links to present
@@ -27,7 +33,7 @@ class Listing extends Component {
     }
 
     return (
-      <form onSubmit={(event) => this.handleChange(event, saveItem, listItem)}>
+      <form onSubmit={(event) => this.handleChange(event, saveItem, unsaveItem, listItem, alreadySaved)}>
           <div className="result-container">
             <div className="grid-left">
               { alreadySaved === true
