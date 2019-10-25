@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 class Listing extends Component {
+
+  handleChange(e, saveItem, item) {
+    e.preventDefault()
+    saveItem(item)
+  }
 
   render() {
     const { listItem, saveItem } = this.props
@@ -21,30 +27,32 @@ class Listing extends Component {
     }
 
     return (
-      <div className="result-container">
-        <div className="grid-left">
-          <button className={`btn btn-save`}
-
-            >Save</button>
-        </div>
-        <div className="grid-right">
-            <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
-              <span className="description">{listItem.info}</span>
-                <ul className="links">
-                { links.map((uri) => (
-                    <li key={uri.what}>{uri.what} {uri.url}</li>
-                ))}
-                </ul>
-            </li>
-        </div>
-      </div>
+      <form onSubmit={(event) => this.handleChange(event, saveItem, listItem)}>
+          <div className="result-container">
+            <div className="grid-left">
+              <button className={`btn btn-save`}
+                      type='submit'
+                >Save</button>
+            </div>
+            <div className="grid-right">
+                <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
+                  <span className="description">{listItem.info}</span>
+                    <ul className="links">
+                    { links.map((uri) => (
+                        <li key={uri.what}>{uri.what} {uri.url}</li>
+                    ))}
+                    </ul>
+                </li>
+            </div>
+          </div>
+      </form>
     )
   }
 }
 
-// Listing.propTypes = {
-//     listItem: PropTypes.object.isRequired,
-//     saveItem: PropTypes.func.isRequired
-// }
+Listing.propTypes = {
+    listItem: PropTypes.object.isRequired,
+    saveItem: PropTypes.func.isRequired
+}
 
 export default Listing

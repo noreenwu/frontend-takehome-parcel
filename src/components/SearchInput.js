@@ -9,25 +9,30 @@ class SearchInput extends Component {
 
   }
 
+
   constructor(props) {
     super(props)
     this.state = {
       query: '',
       searchResult: [],
-      savedItems: []
+      savedItems: {}
     }
+    this.saveItem = this.saveItem.bind(this)
   }
 
   saveItem(item) {
+
       // add the item to the state.savedItems
-      const newSavedItems = this.state.savedItems.slice()
-      newSavedItems.push(formatItem(item))
+      let newSavedItems = {}
+      newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
+      newSavedItems[item.sha] = formatItem(item)
+      console.log("new saved items ", newSavedItems)
+
       this.setState(() => ({
         savedItems: newSavedItems
       }))
 
       // have it added to localstorage (utils)
-
 
   }
 

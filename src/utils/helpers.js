@@ -1,5 +1,7 @@
 export function formatItem(item) {
-  const searchItem = {
+  // the api returns a huge amount of information for each gem. Here, we pare that down
+  // by pulling out the fields we really want to save for the user
+   const searchItem = {
     sha: item.sha,
     name: item.name,
     authors: item.authors,
