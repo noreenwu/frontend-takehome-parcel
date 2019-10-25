@@ -18,6 +18,7 @@ class SearchInput extends Component {
       savedItems: {}
     }
     this.saveItem = this.saveItem.bind(this)
+    this.isSaved = this.isSaved.bind(this)
   }
 
   saveItem(item) {
@@ -68,6 +69,15 @@ class SearchInput extends Component {
       }
   }
 
+  isSaved(id) {
+
+      if ( id in this.state.savedItems ) {
+         return true
+      }
+      else {
+         return false
+      }
+  }
 
   render() {
     console.log("query is ", this.state.query)
@@ -107,7 +117,7 @@ class SearchInput extends Component {
                   ? <li key='other'>no result</li>
                   : this.state.searchResult.map((res) => (
 
-                        <Listing key={res.sha} listItem={res} saveItem={this.saveItem}/>
+                        <Listing key={res.sha} listItem={res} saveItem={this.saveItem} alreadySaved={this.isSaved(res.sha)}/>
 
                   ))
                 }

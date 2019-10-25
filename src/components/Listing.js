@@ -9,7 +9,7 @@ class Listing extends Component {
   }
 
   render() {
-    const { listItem, saveItem } = this.props
+    const { listItem, saveItem, alreadySaved } = this.props
 
     let links = []
     // assemble an array of non-null links to present
@@ -30,9 +30,15 @@ class Listing extends Component {
       <form onSubmit={(event) => this.handleChange(event, saveItem, listItem)}>
           <div className="result-container">
             <div className="grid-left">
-              <button className={`btn btn-save`}
-                      type='submit'
-                >Save</button>
+              { alreadySaved === true
+                ?  <button className={`btn btn-save`}
+                           type='submit'
+                   >Unsave</button>
+                :  <button className={`btn btn-save`}
+                           type='submit'
+                   >Save</button>
+              }
+
             </div>
             <div className="grid-right">
                 <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
@@ -52,7 +58,8 @@ class Listing extends Component {
 
 Listing.propTypes = {
     listItem: PropTypes.object.isRequired,
-    saveItem: PropTypes.func.isRequired
+    saveItem: PropTypes.func.isRequired,
+    alreadySaved: PropTypes.bool.isRequired
 }
 
 export default Listing
