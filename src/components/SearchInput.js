@@ -1,15 +1,41 @@
 import React, { Component, Fragment } from 'react'
 import { get } from '../utils/SearchAPI'
+import { formatItem } from '../utils/helpers'
 import Listing from './Listing'
 
 class SearchInput extends Component {
+  componentDidMount() {
+     // read in saved items from localstorage (utils)
+
+  }
 
   constructor(props) {
     super(props)
     this.state = {
       query: '',
-      searchResult: []
+      searchResult: [],
+      savedItems: []
     }
+  }
+
+  saveItem(item) {
+      // add the item to the state.savedItems
+      const newSavedItems = this.state.savedItems.slice()
+      newSavedItems.push(formatItem(item))
+      this.setState(() => ({
+        savedItems: newSavedItems
+      }))
+
+      // have it added to localstorage (utils)
+
+
+  }
+
+  deleteItem() {
+      // remove item from the state.savedItems
+
+      // have it removed from localstorage (utils)
+
   }
 
 
@@ -76,7 +102,7 @@ class SearchInput extends Component {
                   ? <li key='other'>no result</li>
                   : this.state.searchResult.map((res) => (
 
-                        <Listing key={res.sha} listItem={res}/>
+                        <Listing key={res.sha} listItem={res} saveItem={this.saveItem}/>
 
                   ))
                 }
