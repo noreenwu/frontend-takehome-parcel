@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
-import Listing from './Listing'
+// import Listing from './Listing'
+import SearchResults from './SearchResults'
+
+const SEARCH = 'search'
+const SAVED = 'saved'
 
 class SearchInput extends Component {
+
   componentDidMount() {
      // read in saved items from localstorage (utils)
 
@@ -15,11 +20,29 @@ class SearchInput extends Component {
     this.state = {
       query: '',
       searchResult: [],
-      savedItems: {}
+      savedItems: {},
+      mode: SEARCH
     }
     this.saveItem = this.saveItem.bind(this)
     this.unsaveItem = this.unsaveItem.bind(this)
     this.isSaved = this.isSaved.bind(this)
+    this.showSearchResult = this.showSearchResult.bind(this)
+    this.showSaved = this.showSaved.bind(this)
+  }
+
+  showSearchResult() {
+    console.log("show search result")
+    this.setState(() => ({
+      mode: SEARCH
+    }))
+  }
+
+  showSaved(e) {
+    e.preventDefault()
+    console.log("show saved")
+    this.setState(() => ({
+      mode: SAVED
+    }))
   }
 
   saveItem(item) {
@@ -89,7 +112,7 @@ class SearchInput extends Component {
   }
 
   render() {
-    console.log("query is ", this.state.query)
+    // console.log("query is ", this.state.query)
     return(
       <div>
         <form className='search-box'>
@@ -99,6 +122,7 @@ class SearchInput extends Component {
             placeholder="Search for gems by keyword"
             value={this.state.query}
             onChange={(event) => this.updateQuery(event.target.value)}
+            onFocus={this.showSearchResult}
             className='text-area'
             maxLength={100}
             size={60}
@@ -114,28 +138,23 @@ class SearchInput extends Component {
         <button
            className={`btn btn-full`}
            type='submit'
+           onClick={this.showSaved}
            >
            View Saved
         </button>
 
         </form>
 
-        <div className="search-results">
-                <ul>
-                { this.state.searchResult.length === 0
-                  ? <li key='other'>no result</li>
-                  : this.state.searchResult.map((res) => (
+        { this.state.mode === SEARCH
+          ?  <SearchResults searchResult={this.state.searchResult}
+                            saveItem={this.saveItem}
+                            unsaveItem={this.unsaveItem}
+                            isSaved={this.isSaved}
+                  />
+          :  <div>View Saved</div>
 
-                        <Listing key={res.sha}
-                                 listItem={res}
-                                 saveItem={this.saveItem}
-                                 unsaveItem={this.unsaveItem}
-                                 alreadySaved={this.isSaved(res.sha)}/>
+        }
 
-                  ))
-                }
-                </ul>
-        </div>
       </div>
     )
   }
