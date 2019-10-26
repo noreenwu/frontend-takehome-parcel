@@ -11,7 +11,7 @@ const SearchResults = (props) => {
      <div className="search-results">
              <ul>
              { searchResult.length === 0
-               ? <li key='other'>no result</li>
+               ? <li key='other'>There are no results.</li>
                : searchResult.map((res) => (
 
                      <Listing key={res.sha}

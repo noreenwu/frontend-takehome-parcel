@@ -31,7 +31,10 @@ class SearchInput extends Component {
     this.showSaved = this.showSaved.bind(this)
   }
 
-  showSearchResult() {
+  showSearchResult(e) {
+    if (e != undefined) {
+      e.preventDefault()
+    }
     console.log("show search result")
     this.setState(() => ({
       mode: SEARCH
@@ -137,6 +140,13 @@ class SearchInput extends Component {
           </button>
         </form>
         <form>
+        <button
+           className={`btn btn-full`}
+           type='submit'
+           onClick={this.showSearchResult}
+           >
+           View Searched
+        </button>
         <button
            className={`btn btn-full`}
            type='submit'
