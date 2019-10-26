@@ -112,6 +112,7 @@ class SearchInput extends Component {
     e.preventDefault()
     this.setState(() => ({
       query: '',
+      mode: SEARCH,
       searchResult: []
     }))
   }
