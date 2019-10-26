@@ -4,7 +4,7 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
-import { saveItemToStorage, getAllFromStorage } from '../utils/helpers'
+import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage } from '../utils/helpers'
 
 const SEARCH = 'search'
 const SAVED = 'saved'
@@ -69,7 +69,7 @@ class SearchInput extends Component {
         savedItems: newSavedItems
       }))
 
-      // have it added to localstorage (utils)
+      // have it added to localstorage
       saveItemToStorage(item)
 
   }
@@ -85,8 +85,8 @@ class SearchInput extends Component {
         savedItems: newSavedItems
       }))
 
-      // have it removed from localstorage (utils)
-
+      // have item removed from localstorage
+      deleteItemFromStorage(id)
   }
 
 

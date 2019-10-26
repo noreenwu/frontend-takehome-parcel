@@ -25,18 +25,19 @@ export function saveItemToStorage(item) {
 }
 
 export function deleteItemFromStorage(id) {
-
+  localStorage.removeItem(id)
+  console.log("deleting from local storage", id)
 }
 
 export function getAllFromStorage() {
 
-  let keys= Object.keys(localStorage)
-  // let numKeys = keys.length
   let savedItems = {}
+  let keys= Object.keys(localStorage)
 
   for(let k of keys) {
     savedItems[k] = JSON.parse(localStorage.getItem(k))
   }
   console.log("from local storage", savedItems)
+
   return savedItems
 }
