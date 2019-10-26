@@ -36,7 +36,7 @@ class SearchInput extends Component {
     this.isSaved = this.isSaved.bind(this)
     this.showSearchResult = this.showSearchResult.bind(this)
     this.showSaved = this.showSaved.bind(this)
-    this.clearQuery = this.clearQuery.bind(this)
+    // this.clearQuery = this.clearQuery.bind(this)
   }
 
   showSearchResult(e) {
@@ -114,14 +114,14 @@ class SearchInput extends Component {
       }
   }
 
-  clearQuery(e) {
-    e.preventDefault()
-    this.setState(() => ({
-      query: '',
-      mode: SEARCH,
-      searchResult: []
-    }))
-  }
+  // clearQuery(e) {
+  //   e.preventDefault()
+  //   this.setState(() => ({
+  //     query: '',
+  //     mode: SEARCH,
+  //     searchResult: []
+  //   }))
+  // }
 
   isSaved(id) {
 
@@ -141,14 +141,14 @@ class SearchInput extends Component {
 
         <form className="user-toggle-view">
           <button
-             className={`btn btn-full`}
+             className={`btn btn-ctl`}
              type='submit'
              onClick={this.showSearchResult}
              >
              Find Gems
           </button>
           <button
-             className={`btn btn-full`}
+             className={`btn btn-ctl`}
              type='submit'
              onClick={this.showSaved}
              >
@@ -160,7 +160,8 @@ class SearchInput extends Component {
         <DebounceInput
             debounceTimeout={200}
             name="query"
-            type="text"
+            type="search"
+            aria-label="Search for gems by keyword"
             placeholder="Search for gems by keyword"
             value={this.state.query}
             onChange={(event) => this.updateQuery(event.target.value)}
@@ -170,15 +171,6 @@ class SearchInput extends Component {
             size={60}
           />
 
-        </form>
-        <form>
-          <button
-            className={`btn btn-full`}
-            type='submit'
-            onClick={this.clearQuery}
-          >
-            Clear
-          </button>
         </form>
 
 

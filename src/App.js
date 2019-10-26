@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import SearchInput from './components/SearchInput'
+import Dashboard from './components/Dashboard'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       </div>
       <div className="user-inputs">
 
-          <SearchInput/>
+          <Dashboard/>
       </div>
 
     </div>

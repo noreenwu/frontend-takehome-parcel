@@ -52,9 +52,12 @@ form {
   margin-top: 10px;
 }
 
-.btn-full {
-  width: 100px;
+.btn-ctl {
+  width: 200px;
   margin: 5px;
+  font-family: Roboto;
+  font-size: 1.6em;
+  border-radius: 15px;
 }
 
 .strong {
@@ -76,9 +79,15 @@ ul {
   list-style: none;
 }
 
-input[type=text] {
+input[type=search] {
   margin: 30px 10px;
-  font-size: 1.2em;
+  padding: 10px;
+  font-size: 1.8em;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+input:focus {
+  background-color: orange;
 }
 
 .result-container {
