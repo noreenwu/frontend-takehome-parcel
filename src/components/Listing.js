@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import GemReference from './GemReference'
 import PropTypes from 'prop-types'
 
 class Listing extends Component {
@@ -22,6 +23,7 @@ class Listing extends Component {
         return `by ${author}`
       }
   }
+
 
   render() {
     const { listItem, saveItem, unsaveItem, alreadySaved } = this.props
@@ -63,7 +65,7 @@ class Listing extends Component {
                   <span className="description">{listItem.info}</span>
                     <ul className="links">
                     { links.map((uri) => (
-                        <li key={uri.what}>{uri.what} {uri.url}</li>
+                        <GemReference target={uri.what} url={uri.url}/>
                     ))}
                     </ul>
                 </li>

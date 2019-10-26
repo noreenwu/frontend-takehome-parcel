@@ -34,12 +34,10 @@ form {
   display: inline;
 }
 
-/* li {
-  padding: 15px;
-} */
-
 .search-results {
   background-color: white;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .btn {
@@ -60,8 +58,9 @@ form {
 .btn-save {
   background-color: none;
   color: black;
-  border: 1px solid grey;
+  border: 1px solid darkblue;
   font-weight: bold;
+  color: darkblue;
 }
 
 .btn-unsave {
@@ -83,12 +82,24 @@ form {
 }
 
 .description {
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
+  margin: 10px 0;
+  padding: 0.5em 0;
+  display: block;
 }
 
 .links {
   margin-bottom: 20px;
+}
+
+.link-button {
+  display: inline;
+  width: 80px;
+  height: 20px;
+  margin: 15px 4px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid grey;
 }
 
 ul {
@@ -101,18 +112,38 @@ input[type=search] {
   font-size: 1.8em;
   border: 1px solid grey;
   border-radius: 15px;
+  width: 80%;
 }
 input:focus {
   background-color: orange;
 }
 
-.result-container {
-  display: flex;
+
+@media screen and (min-width: 601px) {
+  .result-container {
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid lightgrey;
+  }
+  .grid-left {
+    width: 20%;
+  }
+  .grid-right {
+    width: 80%;
+  }
 }
 
-.grid-left {
-  width: 10%;
-}
-.grid-right {
-  width: 90%;
+@media screen and (min-width: 100px) and (max-width: 600px) {
+  .result-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid lightgrey;
+  }
+  .grid-left {
+    width: 100%;
+  }
+  .grid-right {
+    width: 100%;
+  }
 }
