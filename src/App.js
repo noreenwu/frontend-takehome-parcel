@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-          Search Ruby Gems
+          Find and Save Ruby Gems
       </div>
       <div className="user-inputs">
 

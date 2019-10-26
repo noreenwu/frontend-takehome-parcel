@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { DebounceInput } from 'react-debounce-input';
 import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
-// import Listing from './Listing'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
+import { saveItemToStorage, getAllFromStorage } from '../utils/helpers'
 
 const SEARCH = 'search'
 const SAVED = 'saved'
@@ -13,7 +13,13 @@ class SearchInput extends Component {
 
   componentDidMount() {
      // read in saved items from localstorage (utils)
+     let savedItemsFromStorage = {}
 
+     savedItemsFromStorage = getAllFromStorage()
+     console.log("savedItemsFromStorage", savedItemsFromStorage)
+     this.setState(() => ({
+       savedItems: savedItemsFromStorage
+     }))
   }
 
 
@@ -52,7 +58,6 @@ class SearchInput extends Component {
   }
 
   saveItem(item) {
-
       // add the item to the state.savedItems
       let newSavedItems = {}
       newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
@@ -65,6 +70,7 @@ class SearchInput extends Component {
       }))
 
       // have it added to localstorage (utils)
+      saveItemToStorage(item)
 
   }
 
@@ -161,14 +167,14 @@ class SearchInput extends Component {
            type='submit'
            onClick={this.showSearchResult}
            >
-           Search
+           Find Gems
         </button>
         <button
            className={`btn btn-full`}
            type='submit'
            onClick={this.showSaved}
            >
-           View Saved
+           Saved Gems
         </button>
 
         </form>

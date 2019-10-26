@@ -20,10 +20,23 @@ export function saveItemToStorage(item) {
 
   const searchItem = formatItem(item)
 
-   window.localStorage.setItem(item.sha, JSON.stringify(searchItem))
+  localStorage.setItem(item.sha, JSON.stringify(searchItem))
 
 }
 
 export function deleteItemFromStorage(id) {
 
+}
+
+export function getAllFromStorage() {
+
+  let keys= Object.keys(localStorage)
+  // let numKeys = keys.length
+  let savedItems = {}
+
+  for(let k of keys) {
+    savedItems[k] = JSON.parse(localStorage.getItem(k))
+  }
+  console.log("from local storage", savedItems)
+  return savedItems
 }
