@@ -137,6 +137,25 @@ class SearchInput extends Component {
     // console.log("query is ", this.state.query)
     return(
       <div>
+
+
+        <form className="user-toggle-view">
+          <button
+             className={`btn btn-full`}
+             type='submit'
+             onClick={this.showSearchResult}
+             >
+             Find Gems
+          </button>
+          <button
+             className={`btn btn-full`}
+             type='submit'
+             onClick={this.showSaved}
+             >
+             Saved Gems
+          </button>
+        </form>
+
         <form className='search-box'>
         <DebounceInput
             debounceTimeout={200}
@@ -161,23 +180,7 @@ class SearchInput extends Component {
             Clear
           </button>
         </form>
-        <form>
-        <button
-           className={`btn btn-full`}
-           type='submit'
-           onClick={this.showSearchResult}
-           >
-           Find Gems
-        </button>
-        <button
-           className={`btn btn-full`}
-           type='submit'
-           onClick={this.showSaved}
-           >
-           Saved Gems
-        </button>
 
-        </form>
 
         { this.state.mode === SEARCH
           ?  <SearchResults searchResult={this.state.searchResult}

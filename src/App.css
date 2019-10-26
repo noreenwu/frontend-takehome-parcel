@@ -1,7 +1,33 @@
-main {
+body {
   background: #eee;
+}
+
+main {
+
   margin: 0;
   padding: 50px;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header {
+  background-color: darkblue;
+  text-align: center;
+  font-size: 60px;
+  line-height: 1.2em;
+  font-weight: 200;
+  color: white;
+  padding: 80px 10px;
+}
+
+.user-toggle-view {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.search-box {
+  display: block;
+  text-align: center;
 }
 
 form {
@@ -13,7 +39,7 @@ form {
 } */
 
 .search-results {
-  background-color: lightblue;
+  background-color: white;
 }
 
 .btn {
@@ -64,12 +90,4 @@ input[type=text] {
 }
 .grid-right {
   width: 90%;
-}
-
-.header {
-  background-color: darkblue;
-  text-align: center;
-  font-size: 2em;
-  color: white;
-  padding: 20px 10px;
 }
