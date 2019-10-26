@@ -14,6 +14,15 @@ class Listing extends Component {
     }
   }
 
+  printByline(author) {
+      if (author === '') {
+        return
+      }
+      else {
+        return `by ${author}`
+      }
+  }
+
   render() {
     const { listItem, saveItem, unsaveItem, alreadySaved } = this.props
 
@@ -37,17 +46,20 @@ class Listing extends Component {
           <div className="result-container">
             <div className="grid-left">
               { alreadySaved === true
-                ?  <button className={`btn btn-save`}
+                ?  <button className={`sbtn btn-unsave`}
                            type='submit'
                    >Unsave</button>
-                :  <button className={`btn btn-save`}
+                :  <button className={`sbtn btn-save`}
                            type='submit'
                    >Save</button>
               }
 
             </div>
             <div className="grid-right">
-                <li key={listItem.sha}><div><span className="strong">{listItem.name}</span> by {listItem.authors} </div>
+                <li key={listItem.sha}>
+                  <div><span className="strong">
+                      {listItem.name}</span> { this.printByline(listItem.authors) }
+                  </div>
                   <span className="description">{listItem.info}</span>
                     <ul className="links">
                     { links.map((uri) => (

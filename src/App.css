@@ -48,8 +48,24 @@ form {
 
 }
 
-.btn-save {
+.sbtn {
   margin-top: 10px;
+  color: white;
+  font-family: Georgia;
+  font-size: .8em;
+  width: 70px;
+  height: 30px;
+
+}
+.btn-save {
+  background-color: none;
+  color: black;
+  border: 1px solid grey;
+  font-weight: bold;
+}
+
+.btn-unsave {
+  background-color: darkblue;
 }
 
 .btn-ctl {
