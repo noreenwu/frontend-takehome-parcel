@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { DebounceInput } from 'react-debounce-input';
 import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 // import Listing from './Listing'
@@ -130,7 +131,8 @@ class SearchInput extends Component {
     return(
       <div>
         <form className='search-box'>
-        <input
+        <DebounceInput
+            debounceTimeout={200}
             name="query"
             type="text"
             placeholder="Search for gems by keyword"
