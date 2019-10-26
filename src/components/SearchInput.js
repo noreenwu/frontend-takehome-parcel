@@ -3,6 +3,7 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 // import Listing from './Listing'
 import SearchResults from './SearchResults'
+import SavedView from './SavedView'
 
 const SEARCH = 'search'
 const SAVED = 'saved'
@@ -52,7 +53,8 @@ class SearchInput extends Component {
       newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
       newSavedItems[item.sha] = formatItem(item)
       console.log("new saved items ", newSavedItems)
-
+      console.log(" saved items values ", Object.values(newSavedItems))
+      console.log(" search result ", this.state.searchResult)
       this.setState(() => ({
         savedItems: newSavedItems
       }))
@@ -151,7 +153,12 @@ class SearchInput extends Component {
                             unsaveItem={this.unsaveItem}
                             isSaved={this.isSaved}
                   />
-          :  <div>View Saved</div>
+          :  <SavedView savedItems={this.state.savedItems}
+                        saveItem={this.saveItem}
+                        unsaveItem={this.unsaveItem}
+                        isSaved={this.isSaved}
+
+                  />
 
         }
 

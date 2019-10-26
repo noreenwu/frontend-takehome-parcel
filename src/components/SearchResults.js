@@ -28,4 +28,10 @@ const SearchResults = (props) => {
 }
 
 
+SearchResults.propTypes = {
+    searchResult: PropTypes.array.isRequired,
+    saveItem: PropTypes.func.isRequired,
+    unsaveItem: PropTypes.func.isRequired,
+    isSaved: PropTypes.func.isRequired
+}
 export default SearchResults
