@@ -29,6 +29,7 @@ class SearchInput extends Component {
     this.isSaved = this.isSaved.bind(this)
     this.showSearchResult = this.showSearchResult.bind(this)
     this.showSaved = this.showSaved.bind(this)
+    this.clearQuery = this.clearQuery.bind(this)
   }
 
   showSearchResult(e) {
@@ -106,6 +107,14 @@ class SearchInput extends Component {
       }
   }
 
+  clearQuery(e) {
+    e.preventDefault()
+    this.setState(() => ({
+      query: '',
+      searchResult: []
+    }))
+  }
+
   isSaved(id) {
 
       if ( id in this.state.savedItems ) {
@@ -135,7 +144,11 @@ class SearchInput extends Component {
 
         </form>
         <form>
-          <button>
+          <button
+            className={`btn btn-full`}
+            type='submit'
+            onClick={this.clearQuery}
+          >
             Clear
           </button>
         </form>
@@ -145,7 +158,7 @@ class SearchInput extends Component {
            type='submit'
            onClick={this.showSearchResult}
            >
-           View Searched
+           Search
         </button>
         <button
            className={`btn btn-full`}
