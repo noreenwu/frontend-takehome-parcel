@@ -65,7 +65,7 @@ class Listing extends Component {
                   <span className="description">{listItem.info}</span>
                     <ul className="links">
                     { links.map((uri) => (
-                        <GemReference key={`${uri.what}-${uri.url}`} target={uri.what} url={uri.url}/>
+                        <GemReference key={uri.what} target={uri.what} url={uri.url}/>
                     ))}
                     </ul>
                 </li>
