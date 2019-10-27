@@ -161,8 +161,8 @@ class SearchInput extends Component {
             debounceTimeout={200}
             name="query"
             type="search"
-            aria-label="Search for gems by keyword"
-            placeholder="Search for gems by keyword"
+            aria-label="Search for RubyGems by keyword"
+            placeholder="Search for RubyGems by keyword..."
             value={this.state.query}
             onChange={(event) => this.updateQuery(event.target.value)}
             onFocus={this.showSearchResult}

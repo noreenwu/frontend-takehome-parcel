@@ -12,7 +12,6 @@ main {
 .header {
   background-color: darkblue;
   text-align: center;
-  font-size: 60px;
   line-height: 1.2em;
   font-weight: 200;
   color: white;
@@ -43,7 +42,6 @@ form {
 .btn {
   width: 60px;
   border: 1px solid grey;
-
 }
 
 .sbtn {
@@ -53,7 +51,7 @@ form {
   font-size: .8em;
   width: 70px;
   height: 30px;
-
+  outline: none;
 }
 .btn-save {
   background-color: none;
@@ -69,10 +67,13 @@ form {
 
 .btn-ctl {
   width: 200px;
+  padding: 10px 5px;
   margin: 5px;
-  font-family: Roboto;
-  font-size: 1.6em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
   border-radius: 15px;
+  outline: none;
 }
 
 .strong {
@@ -99,27 +100,36 @@ form {
   padding: 5px;
   text-align: center;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 2px solid grey;
+  background-color: #f5f0f0;
 }
 
+a:link {
+  text-decoration: none;
+}
 ul {
   list-style: none;
 }
 
 input[type=search] {
   margin: 30px 10px;
-  padding: 10px;
-  font-size: 1.8em;
+  padding: 10px 15px;
+  font-size: 1.6em;
+  font-style: italic;
   border: 1px solid grey;
   border-radius: 15px;
   width: 80%;
 }
 input:focus {
   background-color: orange;
+  outline: none;
 }
 
 
 @media screen and (min-width: 601px) {
+  .header {
+    font-size: 60px;
+  }
   .result-container {
     padding: 20px;
     display: flex;
@@ -134,6 +144,9 @@ input:focus {
 }
 
 @media screen and (min-width: 100px) and (max-width: 600px) {
+  .header {
+    font-size: 30px;
+  }
   .result-container {
     padding: 20px;
     display: flex;
