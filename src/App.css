@@ -76,6 +76,11 @@ form {
   outline: none;
 }
 
+.nav-results {
+  display: flex;
+  justify-content: center;
+}
+
 .strong {
   font-weight: bold;
   /* font-style: italic; */

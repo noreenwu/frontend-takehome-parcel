@@ -4,7 +4,7 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
-import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage } from '../utils/helpers'
+import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate } from '../utils/helpers'
 
 const SEARCH = 'search'
 const SAVED = 'saved'
@@ -103,7 +103,7 @@ class SearchInput extends Component {
       else {
         get(query.toLowerCase())
           .then((res) => {
-             let newResults = res.slice(0, 12)
+             let newResults = res.slice(0, 25)
              console.log("res", newResults, newResults.length)
              this.setState({ searchResult: newResults })
 
@@ -176,6 +176,7 @@ class SearchInput extends Component {
 
         { this.state.mode === SEARCH
           ?  <SearchResults searchResult={this.state.searchResult}
+                            pageResult={paginate(this.state.searchResult)}
                             saveItem={this.saveItem}
                             unsaveItem={this.unsaveItem}
                             isSaved={this.isSaved}

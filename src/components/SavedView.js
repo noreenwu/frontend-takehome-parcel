@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchResults from './SearchResults'
+import { paginate } from '../utils/helpers'
 
 const SavedView = (props) => {
 
@@ -10,9 +11,10 @@ const SavedView = (props) => {
 
   return(
     <SearchResults searchResult={searchResult}
-                      saveItem={saveItem}
-                      unsaveItem={unsaveItem}
-                      isSaved={isSaved}
+                   pageResult={paginate(searchResult)}
+                   saveItem={saveItem}
+                   unsaveItem={unsaveItem}
+                   isSaved={isSaved}
             />
   )
 

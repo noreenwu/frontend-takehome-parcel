@@ -41,3 +41,20 @@ export function getAllFromStorage() {
 
   return savedItems
 }
+
+export function paginate(results) {
+  let pages = []
+
+  // how many pages
+  const numPages = Math.ceil(results.length / 10)
+
+  console.log("num pages", numPages, results)
+
+  let i = 0
+  while (i < numPages) {
+    pages[i] = results.slice(10*i, (i+1)*10)
+    i++
+  }
+  console.log("pages ", pages)
+  return pages
+}
