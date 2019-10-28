@@ -38,13 +38,16 @@ class SearchInput extends Component {
   }
 
   showSearchResult(e) {
+
     if (e != undefined) {
       e.preventDefault()
     }
 
-    this.setState(() => ({
-      mode: SEARCH
-    }))
+    if ( this.state.mode !== SEARCH ) {
+      this.setState(() => ({
+        mode: SEARCH
+      }))
+    }
   }
 
   showSaved(e) {
@@ -85,7 +88,9 @@ class SearchInput extends Component {
   }
 
 
-  updateQuery(query) {
+  updateQuery(e) {
+      e.preventDefault()
+      const query = e.target.value
 
       this.setState(() => ({
         query: query
@@ -151,7 +156,7 @@ class SearchInput extends Component {
             aria-label="Search for RubyGems by keyword"
             placeholder="Search for RubyGems by keyword..."
             value={this.state.query}
-            onChange={(event) => this.updateQuery(event.target.value)}
+            onChange={(event) => this.updateQuery(event)}
             onFocus={this.showSearchResult}
             className='text-area'
             maxLength={100}

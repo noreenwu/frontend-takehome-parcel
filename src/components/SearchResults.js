@@ -37,18 +37,15 @@ class SearchResults extends Component {
   render() {
 
     const { searchResult, pageResult, saveItem, unsaveItem, isSaved } = this.props
-    console.log("pageResult", pageResult)
 
 
     if (pageResult[0] === undefined) {
        return <div>There are no results.</div>
     }
 
-    console.log("pageResult first item of first page", pageResult[0][0].sha)
     let numPages = pageResult.length
-    console.log("number of pages ", numPages)
     let pageIdx = this.state.currPage
-    console.log("pageIdx is ", pageIdx)
+
     return(
        <Fragment>
 
