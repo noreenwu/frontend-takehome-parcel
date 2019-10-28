@@ -77,13 +77,13 @@ form {
 }
 
 button.btn-ctl:hover {
-  background-color: #ccffe6;
+  background-color: paleturquoise;
 }
 button.btn-ctl:active {
-  background-color: #ccffe6;
+  background-color: paleturquoise;
 }
 .highlight {
-  background-color: #ccffe6;
+  background-color: paleturquoise;
 }
 
 .btn-nav {
@@ -93,7 +93,7 @@ button.btn-ctl:active {
   border: 1px solid lightgrey;
 }
 .btn-nav:hover {
-  background-color: mintcream;
+  background-color: paleturquoise;
 }
 .nav-results {
   margin-top: 15px;
@@ -140,7 +140,7 @@ a:link {
   text-decoration: none;
 }
 .link-button:hover {
-  background-color: mintcream;
+  background-color: paleturquoise;
 }
 
 
@@ -158,7 +158,7 @@ input[type=search] {
   width: 80%;
 }
 input:focus {
-  background-color: #ccffe6;
+  background-color: paleturquoise;
   outline: none;
 }
 
