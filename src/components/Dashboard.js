@@ -127,20 +127,32 @@ class SearchInput extends Component {
 
   render() {
 
+    let findHighlight = ''
+    let savedHighlight = ''
+
+    if ( this.state.mode === SEARCH ) {
+      findHighlight = 'highlight'
+      savedHighlight = ''
+    }
+    else {
+      findHighlight = ''
+      savedHighlight = 'highlight'
+    }
+
     return(
       <div>
 
 
         <form className="user-toggle-view">
           <button
-             className={`btn btn-ctl`}
+             className={`btn btn-ctl ${findHighlight}`}
              type='submit'
              onClick={this.showSearchResult}
              >
              Find Gems
           </button>
           <button
-             className={`btn btn-ctl`}
+             className={`btn btn-ctl ${savedHighlight}`}
              type='submit'
              onClick={this.showSaved}
              >
@@ -158,7 +170,7 @@ class SearchInput extends Component {
             value={this.state.query}
             onChange={(event) => this.updateQuery(event)}
             onFocus={this.showSearchResult}
-            className='text-area'
+            className={`text-area ${findHighlight}`}
             maxLength={100}
             size={60}
           />

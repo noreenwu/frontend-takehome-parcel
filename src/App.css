@@ -41,7 +41,7 @@ form {
 
 .btn {
   width: 60px;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
 }
 
 .sbtn {
@@ -53,6 +53,9 @@ form {
   height: 30px;
   outline: none;
 }
+/* .sbtn:hover {
+  background-color: lightskyblue;
+} */
 .btn-save {
   background-color: none;
   color: black;
@@ -69,22 +72,39 @@ form {
   width: 200px;
   padding: 10px 5px;
   margin: 5px;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 15px;
   outline: none;
 }
 
+button.btn-ctl:hover {
+  background-color: mintcream;
+}
+button.btn-ctl:active {
+  background-color: mintcream;
+}
+.highlight {
+  background-color: mintcream;
+}
+
+.btn-nav {
+  width: 80px;
+  margin: 0 10px;
+  outline: none;
+  border: 1px solid lightgrey;
+}
+.btn-nav:hover {
+  background-color: mintcream;
+}
 .nav-results {
   margin-top: 15px;
   display: flex;
   justify-content: center;
 }
-
 .strong {
   font-weight: bold;
-  /* font-style: italic; */
   font-size: 1.5em;
 }
 
@@ -106,13 +126,18 @@ form {
   padding: 5px;
   text-align: center;
   border-radius: 10px;
-  border: 2px solid grey;
+  border: 1px solid grey;
   background-color: #f5f0f0;
 }
 
 a:link {
   text-decoration: none;
 }
+.link-button:hover {
+  background-color: mintcream;
+}
+
+
 ul {
   list-style: none;
 }
@@ -122,19 +147,19 @@ input[type=search] {
   padding: 10px 15px;
   font-size: 1.6em;
   font-style: italic;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   border-radius: 15px;
   width: 80%;
 }
 input:focus {
-  background-color: orange;
+  background-color: mintcream;
   outline: none;
 }
 
 
 @media screen and (min-width: 601px) {
   .header {
-    font-size: 60px;
+    font-size: 40px;
   }
   .result-container {
     padding: 20px;
