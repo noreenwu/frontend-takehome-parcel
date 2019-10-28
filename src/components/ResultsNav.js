@@ -8,7 +8,7 @@ const ResultsNav = (props) => {
           ? <button
                className='btn-nav'
                onClick={(e) => {props.changePage(e, -1)}}
-               >prev page</button>
+               >previous</button>
           : null
         }
         <span className='nav-pagenum'>page {`${props.currPage + 1}`} of {props.numPages}</span>
@@ -16,7 +16,7 @@ const ResultsNav = (props) => {
           ? <button
                className='btn-nav'
                onClick={(e) => {props.changePage(e, 1)}}
-               >next page</button>
+               >next</button>
           : null
         }
       </div>

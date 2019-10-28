@@ -45,7 +45,7 @@ form {
 }
 
 .sbtn {
-  margin-top: 10px;
+  margin: 10px 0;
   color: white;
   font-family: Georgia;
   font-size: .8em;
@@ -103,9 +103,10 @@ button.btn-ctl:active {
   display: flex;
   justify-content: center;
 }
-.strong {
+.title {
   font-weight: bold;
   font-size: 1.5em;
+  overflow-wrap: break-word;
 }
 .error-msg {
   text-align: center;
@@ -117,6 +118,7 @@ button.btn-ctl:active {
   margin: 10px 0;
   padding: 0.5em 0;
   display: block;
+  overflow-wrap: break-word;
 }
 
 .links {
@@ -124,10 +126,8 @@ button.btn-ctl:active {
 }
 
 .link-button {
-  display: inline;
   width: 80px;
   height: 20px;
-  margin: 15px 4px;
   padding: 5px;
   text-align: center;
   border-radius: 10px;
@@ -163,6 +163,13 @@ input:focus {
 
 
 @media screen and (min-width: 601px) {
+  .links {
+    padding: inherit;
+  }
+  .link-button {
+    display: inline;
+    margin: 15px 4px;
+  }
   .header {
     font-size: 40px;
   }
@@ -180,6 +187,13 @@ input:focus {
 }
 
 @media screen and (min-width: 100px) and (max-width: 600px) {
+  .links {
+    padding: 0;
+  }
+  .link-button {
+    display: block;
+    margin: 5px 0;
+  }
   .header {
     font-size: 30px;
   }

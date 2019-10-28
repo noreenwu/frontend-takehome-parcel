@@ -10,7 +10,7 @@ const GemReference = (props) => {
   }
 
   return (
-    <span className="link-button"><a href={url} target={'blank'}>{targetName[0]}</a> </span>
+    <div className="link-button"><a href={url} target={'blank'}>{targetName[0]}</a> </div>
   )
 }
 
