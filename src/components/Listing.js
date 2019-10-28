@@ -48,10 +48,12 @@ class Listing extends Component {
           <div className="result-container">
             <div className="grid-left">
               { alreadySaved === true
-                ?  <button className={`sbtn btn-unsave`}
+                ?  <button aria-label={`unsave ${listItem.name}`}
+                           className={`sbtn btn-unsave`}
                            type='submit'
                    >Unsave</button>
-                :  <button className={`sbtn btn-save`}
+                :  <button aria-label={`save ${listItem.name}`}
+                           className={`sbtn btn-save`}
                            type='submit'
                    >Save</button>
               }
@@ -59,13 +61,13 @@ class Listing extends Component {
             </div>
             <div className="grid-right">
                 <li key={listItem.sha}>
-                  <div><span className="title">
+                  <div><span className="title" id={listItem.name}>
                       {listItem.name}</span> { this.printByline(listItem.authors) }
                   </div>
                   <span className="description">{listItem.info}</span>
                     <ul className="links">
                     { links.map((uri) => (
-                        <GemReference key={uri.what} target={uri.what} url={uri.url}/>
+                        <GemReference key={uri.what} target={uri.what} url={uri.url} listItem={listItem}/>
                     ))}
                     </ul>
                 </li>

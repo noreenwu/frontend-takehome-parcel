@@ -16,7 +16,7 @@ There are two modes in this application: the user is either looking for gems or 
 his/her list of saved gems. To support these 2 functions, the buttons "Find Gems" and "Saved Gems"
 are at the top of the application. When the user clicks on "Find Gems," both the Find Gems
 button and the input field highlight as a unit (subtly), and the cursor is programmatically
-placed in the input field.
+placed in the input field. When the user clicks "Saved Gems," only this button highlights.
 
 There is no submit button for the queries. Rather, any change made to the query triggers
 a lookup. This is convenient but does create issues as the user can type faster than
@@ -39,3 +39,7 @@ Tested primarily on Mac OSX Chrome, some on MacOSX Firefox. Firefox input[type=s
 does not display the X to cancel one's search.
 
 Media queries are included in the CSS to allow for resizing to small viewports.
+
+Aria-labels were added to the input field, save/unsave buttons and resources links,
+so that the purpose of these elements are understandable by assistive technologies
+and their users.

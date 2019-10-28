@@ -49,6 +49,7 @@ class SearchResults extends Component {
     }
 
     let numPages = pageResult.length
+    console.log("SearchResults: numpages ", numPages)
     let pageIdx = this.state.currPage
 
     return(
