@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/parcel build ./index.html",
     "dev": "concurrently './node_modules/.bin/parcel ./index.html' 'node ./server'",
     "start": "NODE_ENV=production node ./server",
-    "test": "echo 'Your test command goes here'"
+    "test": "react-scripts test"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "parcel": "^1.9.7",
     "react": "^16.11.0",
     "react-debounce-input": "^3.2.2",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "react-scripts": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
