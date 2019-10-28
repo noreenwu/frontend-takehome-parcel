@@ -17,7 +17,7 @@ class SearchResults extends Component {
 
   componentDidUpdate(prevProps) {
 
-    if (this.props.pageResult !== prevProps.pageResult) {
+    if (this.props.searchResult !== prevProps.searchResult) {
       this.setState(() => ({
         currPage: 0
       }))
