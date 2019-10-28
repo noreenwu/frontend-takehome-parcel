@@ -1,5 +1,5 @@
 const RESULTS_PER_PAGE = 10
-export const MAX_SEARCH_RESULTS = 25
+export const MAX_SEARCH_RESULTS = 35
 
 export function formatItem(item) {
   // the api returns a huge amount of information for each gem. Here, we pare that down
