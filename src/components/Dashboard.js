@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { DebounceInput } from 'react-debounce-input';
 import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
@@ -9,7 +10,7 @@ import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate, 
 const SEARCH = 'search'
 const SAVED = 'saved'
 
-class SearchInput extends Component {
+class Dashboard extends Component {
 
   componentDidMount() {
      // read in saved items from localstorage (utils)
@@ -38,10 +39,8 @@ class SearchInput extends Component {
   }
 
   showSearchResult(e) {
-
-    if (e != undefined) {
-      e.preventDefault()
-    }
+    e.preventDefault()
+    ReactDOM.findDOMNode(this.inputElement).focus()
 
     if ( this.state.mode !== SEARCH ) {
       this.setState(() => ({
@@ -147,7 +146,7 @@ class SearchInput extends Component {
           <button
              className={`btn btn-ctl ${findHighlight}`}
              type='submit'
-             onClick={this.showSearchResult}
+             onClick={(event) => this.showSearchResult(event)}
              >
              Find Gems
           </button>
@@ -158,22 +157,21 @@ class SearchInput extends Component {
              >
              Saved Gems
           </button>
-        </form>
 
-        <form className='search-box'>
-        <DebounceInput
-            debounceTimeout={200}
-            name="query"
-            type="search"
-            aria-label="Search for RubyGems by keyword"
-            placeholder="Search for RubyGems by keyword..."
-            value={this.state.query}
-            onChange={(event) => this.updateQuery(event)}
-            onFocus={this.showSearchResult}
-            className={`text-area ${findHighlight}`}
-            maxLength={100}
-            size={60}
-          />
+          <DebounceInput className='search-box'
+              debounceTimeout={200}
+              ref={input => this.inputElement = input}
+              name="query"
+              type="search"
+              aria-label="Search for RubyGems by keyword"
+              placeholder="Search for RubyGems by keyword..."
+              value={this.state.query}
+              onChange={(event) => this.updateQuery(event)}
+              onFocus={this.showSearchResult}
+              className={`text-area ${findHighlight}`}
+              maxLength={100}
+              size={60}
+            />
 
         </form>
 
@@ -201,4 +199,4 @@ class SearchInput extends Component {
 }
 
 
-export default SearchInput
+export default Dashboard
