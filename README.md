@@ -32,6 +32,11 @@ to even out the user's rapidly incoming keystrokes.
 
 ## Required Files
 
+index.html
+
+index.js
+
+
 
 ## Testing
 
