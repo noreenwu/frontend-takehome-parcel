@@ -107,7 +107,9 @@ button.btn-ctl:active {
   font-weight: bold;
   font-size: 1.5em;
 }
-
+.center {
+  text-align: center;
+}
 .description {
   margin: 10px 0;
   padding: 0.5em 0;
