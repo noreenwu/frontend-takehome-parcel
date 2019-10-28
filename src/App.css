@@ -77,13 +77,13 @@ form {
 }
 
 button.btn-ctl:hover {
-  background-color: mintcream;
+  background-color: #ccffe6;
 }
 button.btn-ctl:active {
-  background-color: mintcream;
+  background-color: #ccffe6;
 }
 .highlight {
-  background-color: mintcream;
+  background-color: #ccffe6;
 }
 
 .btn-nav {
@@ -102,8 +102,12 @@ button.btn-ctl:active {
 }
 .title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1em;
   overflow-wrap: break-word;
+}
+.authors {
+  font-size: .8em;
+  font-style: italic;
 }
 .error-msg {
   text-align: center;
@@ -154,7 +158,7 @@ input[type=search] {
   width: 80%;
 }
 input:focus {
-  background-color: mintcream;
+  background-color: #ccffe6;
   outline: none;
 }
 

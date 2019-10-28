@@ -16,6 +16,7 @@ const SavedView = (props) => {
                    unsaveItem={unsaveItem}
                    isSaved={isSaved}
                    query={query}
+                   message="You don't have anything saved."
             />
   )
 

@@ -36,15 +36,20 @@ class SearchResults extends Component {
 
   render() {
 
-    const { searchResult, pageResult, saveItem, unsaveItem, isSaved, query } = this.props
+    const { searchResult, pageResult, saveItem, unsaveItem, isSaved, query, message } = this.props
 
 
     if (pageResult[0] === undefined) {
-       if (query === '') {
-         return <div className="error-msg">Enter a keyword in the field above.</div>
+       if ( message !== undefined ) {
+         return <div className="error-msg">{ message }</div>
        }
        else {
-         return <div className="error-msg">There are no results. Try something else?</div>
+         if (query === '') {
+           return <div className="error-msg">Enter a keyword in the field above.</div>
+         }
+         else {
+           return <div className="error-msg">There are no results. Try something else?</div>
+         }
        }
     }
 
@@ -90,6 +95,7 @@ SearchResults.propTypes = {
     saveItem: PropTypes.func.isRequired,
     unsaveItem: PropTypes.func.isRequired,
     isSaved: PropTypes.func.isRequired,
-    query: PropTypes.string.isRequired
+    query: PropTypes.string.isRequired,
+    message: PropTypes.string   // not required
 }
 export default SearchResults

@@ -62,7 +62,8 @@ class Listing extends Component {
             <div className="grid-right">
                 <li key={listItem.sha}>
                   <div><span className="title" id={listItem.name}>
-                      {listItem.name}</span> { this.printByline(listItem.authors) }
+                              {listItem.name} </span> 
+                       <span className="authors">{ this.printByline(listItem.authors) }</span>
                   </div>
                   <span className="description">{listItem.info}</span>
                     <ul className="links">
