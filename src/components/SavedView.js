@@ -5,7 +5,7 @@ import { paginate } from '../utils/helpers'
 
 const SavedView = (props) => {
 
-  const { savedItems, saveItem, unsaveItem, isSaved } = props
+  const { savedItems, saveItem, unsaveItem, isSaved, query } = props
 
   let searchResult = Object.values(savedItems)
 
@@ -15,6 +15,7 @@ const SavedView = (props) => {
                    saveItem={saveItem}
                    unsaveItem={unsaveItem}
                    isSaved={isSaved}
+                   query={query}
             />
   )
 
@@ -24,6 +25,7 @@ SavedView.propTypes = {
     savedItems: PropTypes.object.isRequired,
     saveItem: PropTypes.func.isRequired,
     unsaveItem: PropTypes.func.isRequired,
-    isSaved: PropTypes.func.isRequired
+    isSaved: PropTypes.func.isRequired,
+    query: PropTypes.string.isRequired
 }
 export default SavedView

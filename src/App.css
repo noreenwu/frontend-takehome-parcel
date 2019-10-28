@@ -107,8 +107,11 @@ button.btn-ctl:active {
   font-weight: bold;
   font-size: 1.5em;
 }
-.center {
+.error-msg {
   text-align: center;
+  margin-top: 20px;
+  font-family: Roboto, Helvetica;
+  font-style: italic;
 }
 .description {
   margin: 10px 0;

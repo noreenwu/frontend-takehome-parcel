@@ -179,15 +179,16 @@ class Dashboard extends Component {
         { this.state.mode === SEARCH
           ?  <SearchResults searchResult={this.state.searchResult}
                             pageResult={paginate(this.state.searchResult)}
-                            currPage = {0}
                             saveItem={this.saveItem}
                             unsaveItem={this.unsaveItem}
                             isSaved={this.isSaved}
+                            query={this.state.query}
                   />
           :  <SavedView savedItems={this.state.savedItems}
                         saveItem={this.saveItem}
                         unsaveItem={this.unsaveItem}
                         isSaved={this.isSaved}
+                        query={this.state.query}
 
                   />
 
