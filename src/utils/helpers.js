@@ -1,3 +1,6 @@
+const RESULTS_PER_PAGE = 10
+export const MAX_SEARCH_RESULTS = 25
+
 export function formatItem(item) {
   // the api returns a huge amount of information for each gem. Here, we pare that down
   // by pulling out the fields we really want to save for the user
@@ -25,8 +28,9 @@ export function saveItemToStorage(item) {
 }
 
 export function deleteItemFromStorage(id) {
+
   localStorage.removeItem(id)
-  console.log("deleting from local storage", id)
+
 }
 
 export function getAllFromStorage() {
@@ -37,24 +41,20 @@ export function getAllFromStorage() {
   for(let k of keys) {
     savedItems[k] = JSON.parse(localStorage.getItem(k))
   }
-  console.log("from local storage", savedItems)
 
   return savedItems
 }
 
 export function paginate(results) {
   let pages = []
-
   // how many pages
-  const numPages = Math.ceil(results.length / 10)
-
-  console.log("num pages", numPages, results)
+  const numPages = Math.ceil(results.length / RESULTS_PER_PAGE)
 
   let i = 0
   while (i < numPages) {
     pages[i] = results.slice(10*i, (i+1)*10)
     i++
   }
-  console.log("pages ", pages)
+
   return pages
 }

@@ -1,23 +1,32 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Listing from './Listing'
+import ResultsNav from './ResultsNav'
 import { paginate } from '../utils/helpers'
 
 class SearchResults extends Component {
 
+
   constructor(props) {
     super(props)
-    this.state = {
-      currPage: 0,
-      prev: false,
-      next: false,
-    }
 
-    this.changePage = this.changePage.bind(this)
+    this.state = {
+      currPage: 0
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if (this.props.pageResult !== prevProps.pageResult) {
+      this.setState(() => ({
+        currPage: 0
+      }))
+    }
   }
 
 
-  changePage(e, incr) {
+  changePage = (e, incr) => {
+    e.preventDefault()
     let nextP = this.state.currPage + incr
 
     this.setState(() => ({
@@ -28,23 +37,25 @@ class SearchResults extends Component {
   render() {
 
     const { searchResult, pageResult, saveItem, unsaveItem, isSaved } = this.props
+    console.log("pageResult", pageResult)
 
 
     if (pageResult[0] === undefined) {
-       return null
+       return <div>There are no results.</div>
     }
 
+    console.log("pageResult first item of first page", pageResult[0][0].sha)
     let numPages = pageResult.length
     console.log("number of pages ", numPages)
     let pageIdx = this.state.currPage
     console.log("pageIdx is ", pageIdx)
     return(
        <Fragment>
+
+
          <div className="search-results">
                  <ul>
-                 { pageResult[pageIdx].length === 0
-                   ? <li key='other'>There are no results.</li>
-                   : pageResult[pageIdx].map((res) => (
+                 {  pageResult[pageIdx].map((res) => (
 
                          <Listing key={res.sha}
                                   listItem={res}
@@ -55,24 +66,15 @@ class SearchResults extends Component {
                    ))
                  }
                  </ul>
+
+                 <ResultsNav
+                     currPage={this.state.currPage}
+                     changePage={this.changePage}
+                     numPages={numPages}
+                 />
+
          </div>
-         <div className="nav-results">
-           { this.state.currPage > 0
-             ? <button
-                  className='btn'
-                  onClick={(e) => {this.changePage(e, -1)}}
-                  >prev page</button>
-             : null
-           }
-           <span className='nav-pagenum'>page {`${pageIdx + 1}`} of {numPages}</span>
-           { pageIdx < numPages-1
-             ? <button
-                  className='btn'
-                  onClick={(e) => {this.changePage(e, 1)}}
-                  >next page</button>
-             : null
-           }
-         </div>
+
        </Fragment>
     )
   }
@@ -81,6 +83,7 @@ class SearchResults extends Component {
 
 SearchResults.propTypes = {
     searchResult: PropTypes.array.isRequired,
+    pageResult: PropTypes.array.isRequired,
     saveItem: PropTypes.func.isRequired,
     unsaveItem: PropTypes.func.isRequired,
     isSaved: PropTypes.func.isRequired

@@ -4,7 +4,7 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
-import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate } from '../utils/helpers'
+import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate, MAX_SEARCH_RESULTS } from '../utils/helpers'
 
 const SEARCH = 'search'
 const SAVED = 'saved'
@@ -16,7 +16,6 @@ class SearchInput extends Component {
      let savedItemsFromStorage = {}
 
      savedItemsFromStorage = getAllFromStorage()
-     console.log("savedItemsFromStorage", savedItemsFromStorage)
      this.setState(() => ({
        savedItems: savedItemsFromStorage
      }))
@@ -36,14 +35,13 @@ class SearchInput extends Component {
     this.isSaved = this.isSaved.bind(this)
     this.showSearchResult = this.showSearchResult.bind(this)
     this.showSaved = this.showSaved.bind(this)
-    // this.clearQuery = this.clearQuery.bind(this)
   }
 
   showSearchResult(e) {
     if (e != undefined) {
       e.preventDefault()
     }
-    console.log("show search result")
+
     this.setState(() => ({
       mode: SEARCH
     }))
@@ -51,7 +49,7 @@ class SearchInput extends Component {
 
   showSaved(e) {
     e.preventDefault()
-    console.log("show saved")
+
     this.setState(() => ({
       mode: SAVED
     }))
@@ -62,9 +60,7 @@ class SearchInput extends Component {
       let newSavedItems = {}
       newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
       newSavedItems[item.sha] = formatItem(item)
-      console.log("new saved items ", newSavedItems)
-      console.log(" saved items values ", Object.values(newSavedItems))
-      console.log(" search result ", this.state.searchResult)
+
       this.setState(() => ({
         savedItems: newSavedItems
       }))
@@ -79,7 +75,6 @@ class SearchInput extends Component {
       let newSavedItems = {}
       newSavedItems = Object.assign(newSavedItems, this.state.savedItems)
       delete newSavedItems[id]
-      console.log("new saved items after deletion ", newSavedItems)
 
       this.setState(() => ({
         savedItems: newSavedItems
@@ -91,6 +86,7 @@ class SearchInput extends Component {
 
 
   updateQuery(query) {
+
       this.setState(() => ({
         query: query
       }))
@@ -103,25 +99,16 @@ class SearchInput extends Component {
       else {
         get(query.toLowerCase())
           .then((res) => {
-             let newResults = res.slice(0, 25)
-             console.log("res", newResults, newResults.length)
+             let newResults = res.slice(0, MAX_SEARCH_RESULTS)
+             // console.log("res", newResults, newResults.length)
              this.setState({ searchResult: newResults })
-
           })
           .catch((err) => {
              console.log("search error", err)
           })
       }
-  }
 
-  // clearQuery(e) {
-  //   e.preventDefault()
-  //   this.setState(() => ({
-  //     query: '',
-  //     mode: SEARCH,
-  //     searchResult: []
-  //   }))
-  // }
+  }
 
   isSaved(id) {
 
@@ -134,7 +121,7 @@ class SearchInput extends Component {
   }
 
   render() {
-    // console.log("query is ", this.state.query)
+
     return(
       <div>
 
@@ -177,6 +164,7 @@ class SearchInput extends Component {
         { this.state.mode === SEARCH
           ?  <SearchResults searchResult={this.state.searchResult}
                             pageResult={paginate(this.state.searchResult)}
+                            currPage = {0}
                             saveItem={this.saveItem}
                             unsaveItem={this.unsaveItem}
                             isSaved={this.isSaved}
