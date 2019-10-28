@@ -40,7 +40,7 @@ class SearchResults extends Component {
 
 
     if (pageResult[0] === undefined) {
-       return <div>There are no results.</div>
+       return <div className="center">There are no results.</div>
     }
 
     let numPages = pageResult.length
