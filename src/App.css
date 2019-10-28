@@ -53,9 +53,6 @@ form {
   height: 30px;
   outline: none;
 }
-/* .sbtn:hover {
-  background-color: lightskyblue;
-} */
 .btn-save {
   background-color: none;
   color: black;
