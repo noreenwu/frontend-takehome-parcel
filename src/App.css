@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;   /* prevent scrollbar from shifting screen contents */
+}
+
 body {
   background: #eee;
 }
@@ -15,7 +19,7 @@ main {
   line-height: 1.2em;
   font-weight: 200;
   color: white;
-  padding: 80px 10px;
+  padding: 100px 10px 40px 10px;
 }
 
 .user-toggle-view {
@@ -27,6 +31,10 @@ main {
 .search-box {
   display: block;
   text-align: center;
+}
+
+.dashboard {
+  background-color: darkblue;
 }
 
 form {
@@ -77,13 +85,13 @@ form {
 }
 
 button.btn-ctl:hover {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
 }
 button.btn-ctl:active {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
 }
 .highlight {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
 }
 
 .btn-nav {
@@ -93,7 +101,7 @@ button.btn-ctl:active {
   border: 1px solid lightgrey;
 }
 .btn-nav:hover {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
 }
 .nav-results {
   margin-top: 15px;
@@ -140,7 +148,7 @@ a:link {
   text-decoration: none;
 }
 .link-button:hover {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
 }
 
 
@@ -158,7 +166,7 @@ input[type=search] {
   width: 80%;
 }
 input:focus {
-  background-color: paleturquoise;
+  background-color: #c9e3e4;
   outline: none;
 }
 
@@ -173,6 +181,7 @@ input:focus {
   }
   .header {
     font-size: 40px;
+    display: block;
   }
   .result-container {
     padding: 20px;

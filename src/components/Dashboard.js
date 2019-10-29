@@ -5,6 +5,7 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
+import Header from './Header'
 import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate, MAX_SEARCH_RESULTS } from '../utils/helpers'
 
 const SEARCH = 'search'
@@ -139,62 +140,64 @@ class Dashboard extends Component {
     }
 
     return(
-      <div>
+      <Fragment>
+        <div className="dashboard">
 
+          <div className="header">Find and Save RubyGems.</div>
+          <form className="user-toggle-view">
+            <button
+               className={`btn btn-ctl ${findHighlight}`}
+               type='submit'
+               onClick={(event) => this.showSearchResult(event)}
+               >
+               Find Gems
+            </button>
+            <button
+               className={`btn btn-ctl ${savedHighlight}`}
+               type='submit'
+               onClick={this.showSaved}
+               >
+               Saved Gems
+            </button>
 
-        <form className="user-toggle-view">
-          <button
-             className={`btn btn-ctl ${findHighlight}`}
-             type='submit'
-             onClick={(event) => this.showSearchResult(event)}
-             >
-             Find Gems
-          </button>
-          <button
-             className={`btn btn-ctl ${savedHighlight}`}
-             type='submit'
-             onClick={this.showSaved}
-             >
-             Saved Gems
-          </button>
+            <DebounceInput className='search-box'
+                debounceTimeout={200}
+                ref={input => this.inputElement = input}
+                name="query"
+                type="search"
+                aria-label="Search for RubyGems by keyword"
+                placeholder="Search for RubyGems by keyword..."
+                value={this.state.query}
+                onChange={(event) => this.updateQuery(event)}
+                onFocus={this.showSearchResult}
+                className={`text-area ${findHighlight}`}
+                maxLength={100}
+                size={60}
+              />
 
-          <DebounceInput className='search-box'
-              debounceTimeout={200}
-              ref={input => this.inputElement = input}
-              name="query"
-              type="search"
-              aria-label="Search for RubyGems by keyword"
-              placeholder="Search for RubyGems by keyword..."
-              value={this.state.query}
-              onChange={(event) => this.updateQuery(event)}
-              onFocus={this.showSearchResult}
-              className={`text-area ${findHighlight}`}
-              maxLength={100}
-              size={60}
-            />
+          </form>
+          </div>
+          <div>
+          { this.state.mode === SEARCH
+            ?  <SearchResults searchResult={this.state.searchResult}
+                              pageResult={paginate(this.state.searchResult)}
+                              saveItem={this.saveItem}
+                              unsaveItem={this.unsaveItem}
+                              isSaved={this.isSaved}
+                              query={this.state.query}
+                    />
+            :  <SavedView savedItems={this.state.savedItems}
+                          saveItem={this.saveItem}
+                          unsaveItem={this.unsaveItem}
+                          isSaved={this.isSaved}
+                          query={this.state.query}
 
-        </form>
+                    />
 
+          }
 
-        { this.state.mode === SEARCH
-          ?  <SearchResults searchResult={this.state.searchResult}
-                            pageResult={paginate(this.state.searchResult)}
-                            saveItem={this.saveItem}
-                            unsaveItem={this.unsaveItem}
-                            isSaved={this.isSaved}
-                            query={this.state.query}
-                  />
-          :  <SavedView savedItems={this.state.savedItems}
-                        saveItem={this.saveItem}
-                        unsaveItem={this.unsaveItem}
-                        isSaved={this.isSaved}
-                        query={this.state.query}
-
-                  />
-
-        }
-
-      </div>
+        </div>
+      </Fragment>
     )
   }
 }
