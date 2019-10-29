@@ -5,7 +5,6 @@ import { get } from '../utils/SearchAPI'
 import { formatItem } from '../utils/helpers'
 import SearchResults from './SearchResults'
 import SavedView from './SavedView'
-import Header from './Header'
 import { saveItemToStorage, getAllFromStorage, deleteItemFromStorage, paginate, MAX_SEARCH_RESULTS } from '../utils/helpers'
 
 const SEARCH = 'search'
