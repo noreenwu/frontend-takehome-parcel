@@ -99,6 +99,7 @@ button.btn-ctl:active {
   margin: 0 10px;
   outline: none;
   border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 .btn-nav:hover {
   background-color: #c9e3e4;
