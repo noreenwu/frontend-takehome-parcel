@@ -1,6 +1,6 @@
 # Teachable frontend takehome
 # Noreen Wu
-# October 28, 2019
+# October 2019
 
 # Overview
 This React application allows a user to search for and optionally save RubyGems.
