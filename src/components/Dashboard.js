@@ -113,8 +113,8 @@ class Dashboard extends Component {
 
   }
 
+  // determine if an item has already been saved
   isSaved(id) {
-
       if ( id in this.state.savedItems ) {
          return true
       }

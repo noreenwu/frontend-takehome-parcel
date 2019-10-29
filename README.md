@@ -94,6 +94,10 @@ utils/helpers.js - this file contains functions that facilitate some of the form
 
 utils/SearchAPI.js - the getting of the search results from the provided backend server is defined here
 
+App.css - contains the styling for the app
+
+package.json - defines the environment needed for the app to run
+
 
 ## Testing
 
