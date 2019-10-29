@@ -7,6 +7,7 @@ const SavedView = (props) => {
 
   const { savedItems, saveItem, unsaveItem, isSaved, query } = props
 
+  // get savedItems in form that SearchResults can use
   let searchResult = Object.values(savedItems)
 
   return(

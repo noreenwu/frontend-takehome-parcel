@@ -69,7 +69,7 @@ components/Dashboard.js - this component coordinates the high-level functionalit
 
 components/SearchResults.js -  this is where the display of search results is defined. The results
       are paginated and page 1 is by default shown. This component needs to update the page shown
-      if the user changes the page, using links rendered by ResultsNav. This component is used
+      if the user changes the page, by using links rendered by ResultsNav. This component is used
       for both active search results and saved results.
 
 components/ResultsNav.js - called by SearchResults, this component shows the user what page they are on

@@ -15,6 +15,7 @@ class Listing extends Component {
     }
   }
 
+  // if there is no author listed, don't show "by" with nothing after it
   printByline(author) {
       if (author === '') {
         return
@@ -62,7 +63,7 @@ class Listing extends Component {
             <div className="grid-right">
                 <li key={listItem.sha}>
                   <div><span className="title" id={listItem.name}>
-                              {listItem.name} </span> 
+                              {listItem.name} </span>
                        <span className="authors">{ this.printByline(listItem.authors) }</span>
                   </div>
                   <span className="description">{listItem.info}</span>

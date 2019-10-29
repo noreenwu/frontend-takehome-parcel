@@ -104,7 +104,6 @@ class Dashboard extends Component {
         get(query.toLowerCase())
           .then((res) => {
              let newResults = res.slice(0, MAX_SEARCH_RESULTS)
-             // console.log("res", newResults, newResults.length)
              this.setState({ searchResult: newResults })
           })
           .catch((err) => {
